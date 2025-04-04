@@ -1,18 +1,18 @@
 import express from "express";
 import { Server } from "socket.io";
-import multer, { memoryStorage } from "multer";
+import multer from "multer";
 import http from "http";
-import { tmpdir } from "os";
 import { WhatsAppClient } from "./lib/wa";
 import { MessageMedia } from "whatsapp-web.js";
 import fs from "fs";
+import path from "path";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 const io = new Server(server);
-const upload = multer({ dest: tmpdir() });
+const upload = multer({ dest: path.join(__dirname, "../uploads") });
 const wa = new WhatsAppClient();
 wa.initialize();
 
