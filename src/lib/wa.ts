@@ -12,7 +12,10 @@ export class WhatsAppClient {
 				dataPath: path.join(__dirname, "../.."),
 			}),
 			puppeteer: {
-				headless: false,
+				headless:
+					process.env.NODE_ENV === "production" //
+						? true
+						: false,
 				executablePath:
 					process.env.NODE_ENV === "production" //
 						? "/usr/bin/brave-browser"
