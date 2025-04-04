@@ -10,6 +10,10 @@ export class WhatsAppClient {
 
 	constructor() {
 		this.client = new Client({
+			proxyAuthentication: {
+				username: "txoxexda",
+				password: "6vg1j85b48cp",
+			},
 			authStrategy: new LocalAuth({
 				dataPath: path.join(__dirname, "../.."),
 			}),
@@ -25,6 +29,7 @@ export class WhatsAppClient {
 				args: [
 					"--no-sandbox", //
 					"--disable-setuid-sandbox",
+					"--proxy-server=38.154.227.167:5868",
 				],
 			},
 		});
