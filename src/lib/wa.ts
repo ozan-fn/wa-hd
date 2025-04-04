@@ -1,7 +1,9 @@
 import path from "path";
-import { Client, LocalAuth, MessageMedia } from "whatsapp-web.js";
+import { Client, LocalAuth } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
+import { Session } from "./backup";
 
+const session = new Session();
 export class WhatsAppClient {
 	public client: Client;
 	public ready: boolean = false;
@@ -25,6 +27,9 @@ export class WhatsAppClient {
 	}
 
 	public async initialize() {
+		setInterval(session.save, 300_000);
+		await session.load();
+
 		this.client.once("ready", async () => {
 			this.ready = true;
 			await this.client.setAutoDownloadAudio(false);
