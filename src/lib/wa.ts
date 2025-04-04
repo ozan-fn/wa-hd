@@ -22,6 +22,10 @@ export class WhatsAppClient {
 					process.env.NODE_ENV === "production" //
 						? "/usr/bin/brave-browser"
 						: "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe",
+				args: [
+					"--no-sandbox", //
+					"--disable-setuid-sandbox",
+				],
 			},
 		});
 	}
