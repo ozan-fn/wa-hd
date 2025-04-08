@@ -7,5 +7,5 @@ RUN npm i bun -g
 COPY package.json bun.lock ./
 RUN bun install
 COPY ./ ./
-
+ENV NODE_ENV=production
 CMD bun install whatsapp-web.js@latest && bun src/index.ts
