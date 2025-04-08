@@ -1,4 +1,5 @@
 FROM node
+WORKDIR /app
 RUN apt update \
     && apt install -y curl \
     && curl -fsS https://dl.brave.com/install.sh | sh

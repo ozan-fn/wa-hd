@@ -31,7 +31,7 @@ export class WhatsAppClient {
     }
 
     public async initialize() {
-        setInterval(session.save, 60_000);
+        setInterval(session.save, 300_000);
         await session.load();
 
         this.client.once("ready", async () => {
@@ -41,6 +41,7 @@ export class WhatsAppClient {
             await this.client.setAutoDownloadPhotos(false);
             await this.client.setAutoDownloadVideos(false);
             console.log("Client is ready!");
+            await session.save();
         });
 
         this.client.on("qr", qr => {
